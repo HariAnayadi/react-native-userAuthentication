@@ -3,10 +3,18 @@ import React from 'react'
 
 import AuthForm from './AuthForm'
 
-const AuthContent = ({isLogin}) => {
+const AuthContent = ({isLogin,onAuthenticate}) => {
+
+  function userDataHandler(userData)
+  {
+    const email=userData.email
+    const password=userData.password
+
+    onAuthenticate(email,password)
+  }
   return (
     <View style={styles.container}>
-        <AuthForm isLogin={isLogin} />
+        <AuthForm isLogin={isLogin} onSubmit={userDataHandler}/>
     </View>
   )
 }
